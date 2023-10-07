@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoginPage</title>
+    <style>
+        body {
+                margin:0;
+                padding:0;
+                background-image:url(coot.jpg);
+                background-size: cover;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: transparent;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Sign-Up Page</h2>
+        <form id="signup-form">
+            <label for="email">User Email:</label>
+            <input type="text" id="email" placeholder="Username" name="email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("signup-form").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            // Regular expressions for email and password validation
+            const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+            const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*\d).{8,}$/;
+
+            // Check if the email is valid
+            if (!emailRegex.test(email)) {
+                alert("Invalid email address. Please enter a valid email.");
+                return;
+            }
+
+            // Check if the password meets the criteria
+            if (!passwordRegex.test(password)) {
+                alert("Invalid password. Please ensure that your password:\n" +
+                    "1. Is at least 8 characters long\n" +
+                    "2. Contains at least one uppercase letter\n" +
+                    "3. Contains at least one special character (!@#$%^&*)\n" +
+                    "4. Contains at least one number");
+                return;
+            }
+
+            // If both email and password are valid
+            alert("Successful");
+        });
+    </script>
+</body>
+</html>
